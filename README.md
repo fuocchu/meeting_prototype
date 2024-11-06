@@ -1,7 +1,6 @@
 ## Overview  
 **TEST2** - This system is designed to help schedule a meeting for multiple users by considering their availability and constraints communicated through natural language input. The system processes user availability data, handles constraints such as time preferences and exclusions, and suggests common meeting times based on the overlap of user schedules.
 
-![test2](https://github.com/user-attachments/assets/69a75372-f941-4591-8460-00bfd1a8d8c2)
 [test2_meeting.webm](https://github.com/user-attachments/assets/70d20cd0-8755-4b90-a814-a541c8595b3e)
 
 ---
