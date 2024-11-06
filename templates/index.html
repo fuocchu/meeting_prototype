@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Scheduler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Meeting Scheduler</h1>
+        <form action="/submit" method="POST">
+            <div class="form-group">
+                <label for="username">Your Name:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="availability">Your Availability:</label>
+                <textarea id="availability" name="availability" rows="4" required></textarea>
+            </div>
+            <button type="submit">Submit Availability</button>
+        </form>
+
+        <div class="submissions">
+            <h2>Submitted Availability:</h2>
+            {% for submission in submissions %}
+                <div class="submission">
+                    <p><strong>{{ submission.username }}:</strong> {{ submission.availability | tojson }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if common_times %}
+            <div class="suggestion">
+                <h2>Suggested Meeting Time:</h2>
+                <ul>
+                    {% for day, times in common_times.items() %}
+                        <li>{{ day }}: {{ times | join(', ') }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <form action="/suggest" method="POST">
+            <button type="submit">Suggest Meeting Time</button>
+        </form>
+    </div>
+</body>
+</html>
